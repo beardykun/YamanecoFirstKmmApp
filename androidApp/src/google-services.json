@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "244878197405",
+    "project_id": "dorian-632b9",
+    "storage_bucket": "dorian-632b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244878197405:android:f467ca3d8ee9c9e8384a74",
+        "android_client_info": {
+          "package_name": "com.example.yamanecofirstkmmapp.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244878197405-quuvc1morrmkjq3pi10aku9rif9iir9u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZsCjz3Dsri3WiQZpcki1RMtPuF8rwH_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244878197405-hnfob56l34g126vocs3lefjvhtphmkgc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "244878197405-n855a7sv62pr1ug6qjrjikrdg0454i5c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yamanecofirstkmmapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
