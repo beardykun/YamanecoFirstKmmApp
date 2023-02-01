@@ -19,6 +19,7 @@ struct iOSApp: App {
              * `application(_:didFinishLaunchingWithOptions:)` (or the `@main` struct's initializer in SwiftUI).'
              */
             FirebaseApp.configure()
+            KMMResourcesLocalizationKt.localizationBundle = Bundle(for: L.self)
         }
     
 	var body: some Scene {

@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     kotlin("plugin.serialization") version Deps.kotlinVersion
+    id ("dev.jamiecraane.plugins.kmmresources") version Deps.kmmResourcesVersion
 }
 
 kotlin {
@@ -26,10 +27,11 @@ kotlin {
         ios.deploymentTarget = "14.1"
         podfile = project.file("../iosApp/Podfile")
         framework {
+            isStatic = true
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -68,6 +70,69 @@ kotlin {
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
         }
+    }
+}
+
+
+kmmResourcesConfig {
+    androidApplicationId.set("com.example.yamanecofirstkmmapp")
+    packageName.set("com.example.yamanecofirstkmmapp.shared.localization")
+    defaultLanguage.set("en")
+    input.set(File(project.projectDir.path, "generic.yaml"))
+    output.set(project.projectDir)
+    //srcFolder.set("src") // Optional, defaults to 'src'
+    //generatedClassName.set("KMMResourcesLocalization.kt") // Optional, defaults to 'KMMResourcesLocalization.kt'
+    //androidStringsPrefix.set("_generated") // Optional, defaults to '_generated'
+    //androidSourceFolder.set("main") // The location of the android sources in the shared module (Optional, defaults to androidMain)
+    useDefaultTranslationIfNotInitialized.set(true) // When true, outputs the texts of the default language in the Android generated actual declarations instead of an empty String
+}
+val plutil = tasks["executePlutil"] // This one is only needed for iOS
+
+val generateLocalizations = tasks["generateLocalizations"]
+tasks
+
+val packForXcode by tasks.creating(Sync::class) {
+    group = "build"
+    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
+    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
+    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
+    val framework = kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    inputs.property("mode", mode)
+    dependsOn(framework.linkTask)
+    val targetDir = File(buildDir, "xcode-frameworks")//findProperty("configuration.build.dir")
+    println("TAGGER targetDir = $targetDir")
+    println("TAGGER ${project.rootDir}/shared/src/commonMain/resources/ios")
+    if (targetDir == null) {
+        System.err.println("configuration.build.dir is not defined. Please pass this property from the XCode build.")
+    }
+    from({ framework.outputDirectory })
+    into(targetDir)
+
+//    This is added to the packForXCode task. commonMain/resources/ios is the location of the generated Localizable.strings files.
+    doLast {
+        copy {
+            from("${project.rootDir}/src/commonMain/resources/ios")
+            into("${targetDir}/shared.framework")
+        }
+    }
+}
+
+tasks {
+/*
+     * This sets up dependencies between the plutil task and compileKotlinIos* tasks. This
+     * way common is recompiled if something in generic.yaml changes (so new ios resources
+     * are generated). If the generic.yaml file is not changed, the resources are considered
+     * up to date by Gradle.
+
+ */
+    named("compileKotlinIosX64") {
+        dependsOn(plutil)
+    }
+    named("preBuild") {
+        dependsOn(generateLocalizations)
+    }
+    named("linkPodReleaseFrameworkIosX64").configure {
+        dependsOn(generateLocalizations)
     }
 }
 

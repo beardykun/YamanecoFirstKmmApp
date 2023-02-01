@@ -37,7 +37,7 @@ struct HomeScreen: View {
             Spacer(minLength: 16)
 
             CustomButton(
-                lable: "Logout",
+                label: L.Companion().home.button.logout(),
                 action: {
                 viewModel.onEvent(event: HomeEvent.LogOut())
             })

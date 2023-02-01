@@ -40,6 +40,7 @@ object Deps {
     // GRADLE PLUGINS
     const val kotlinVersion = "1.7.21"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val kmmResourcesVersion = "1.0.0-alpha10"
 
     private const val gradleVersion = "7.2.2"
     const val androidBuildTools = "com.android.tools.build:gradle:$gradleVersion"

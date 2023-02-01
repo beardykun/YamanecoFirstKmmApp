@@ -1,0 +1,29 @@
+registration:
+  button:
+    register:
+      en: "Register"
+  editText:
+    name:
+      en: "Enter user name"
+    email:
+      en: "Enter email"
+    password:
+      en: "Enter password"
+
+login:
+  button:
+    login:
+      en: "Login"
+    register:
+      en: "Register"
+  editText:
+    email:
+      en: "Enter email"
+    password:
+      en: "Enter password"
+
+home:
+  button:
+    logout:
+      en: "Logout"
+
