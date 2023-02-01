@@ -17,11 +17,6 @@ import com.example.yamanecofirstkmmapp.android.core.composables.EditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterEvent
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterState
-import com.example.yamanecofirstkmmapp.shared.localization.L
-import com.example.yamanecofirstkmmapp.shared.localization.email
-import com.example.yamanecofirstkmmapp.shared.localization.name
-import com.example.yamanecofirstkmmapp.shared.localization.password
-import com.example.yamanecofirstkmmapp.shared.localization.register
 
 @Composable
 fun RegisterScreen(

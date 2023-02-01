@@ -18,11 +18,6 @@ import com.example.yamanecofirstkmmapp.android.core.composables.EditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.login.presinattion.LoginEvent
 import com.example.yamanecofirstkmmapp.login.presinattion.LoginState
-import com.example.yamanecofirstkmmapp.shared.localization.L
-import com.example.yamanecofirstkmmapp.shared.localization.email
-import com.example.yamanecofirstkmmapp.shared.localization.login
-import com.example.yamanecofirstkmmapp.shared.localization.password
-import com.example.yamanecofirstkmmapp.shared.localization.register
 
 @Composable
 fun LoginScreen(
