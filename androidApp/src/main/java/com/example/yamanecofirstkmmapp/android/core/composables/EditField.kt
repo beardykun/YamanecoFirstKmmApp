@@ -23,6 +23,6 @@ fun EditField(
         },
         shape = RoundedCornerShape(50.dp),
         placeholder = { Text(text = hint) },
-        modifier = modifier.fillMaxWidth().padding(16.dp).padding(end = 40.dp)
+        modifier = modifier.fillMaxWidth().padding(16.dp)
     )
 }

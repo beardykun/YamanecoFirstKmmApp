@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct CustomButton: View {
-    let lable: String
+    let label: String
     let action: () -> Void
     var body: some View {
-        Button(lable) {
+        Button(label) {
             action()
         }
         .padding(.horizontal, 20)
@@ -24,6 +24,6 @@ struct CustomButton: View {
 
 struct CustomButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton(lable: "button lable", action: {})
+        CustomButton(label: "button lable", action: {})
     }
 }

@@ -4,25 +4,25 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
+import com.example.yamanecofirstkmmapp.android.core.composables.EditField
+import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.login.presinattion.LoginEvent
 import com.example.yamanecofirstkmmapp.login.presinattion.LoginState
+import com.example.yamanecofirstkmmapp.shared.localization.L
+import com.example.yamanecofirstkmmapp.shared.localization.email
+import com.example.yamanecofirstkmmapp.shared.localization.login
+import com.example.yamanecofirstkmmapp.shared.localization.password
+import com.example.yamanecofirstkmmapp.shared.localization.register
 
 @Composable
 fun LoginScreen(
@@ -58,41 +58,35 @@ fun LoginScreen(
                     verticalArrangement = Arrangement.Center
                 ) {
                     item {
-                        OutlinedTextField(
-                            value = state.email,
-                            onValueChange = { newValue ->
+                        EditField(
+                            text = state.email,
+                            hint = L.login.editText.email(),
+                            onTextChanged = { newValue ->
                                 onEvent(LoginEvent.EditEmail(newValue))
-                            },
-                            shape = RoundedCornerShape(50.dp),
-                            placeholder = { Text(text = "enter email") },
-                            modifier = Modifier.fillMaxWidth().padding(16.dp).padding(end = 40.dp)
+                            }
                         )
                     }
 
                     item {
-                        OutlinedTextField(
-                            value = state.password,
-                            onValueChange = { newValue ->
+                        EditField(
+                            text = state.password,
+                            hint = L.login.editText.password(),
+                            onTextChanged = { newValue ->
                                 onEvent(LoginEvent.EditPassword(newValue))
-                            },
-                            shape = RoundedCornerShape(50.dp),
-                            placeholder = { Text(text = "enter password") },
-                            modifier = Modifier.fillMaxWidth().padding(16.dp).padding(end = 40.dp)
+                            }
                         )
                     }
                     item {
-                        Button(onClick = {
-                            onEvent(LoginEvent.Login)
-                        }) {
-                            Text("Login")
-                        }
+                        RoundedButton(
+                            label = L.login.button.login(),
+                            onClick = { onEvent(LoginEvent.Login) }
+                        )
                     }
                     item {
-                        Button(onClick = {
-                            onEvent(LoginEvent.Register)
-                        }) {
-                            Text("Register")
-                        }
+                        RoundedButton(
+                            label = L.login.button.register(),
+                            onClick = { onEvent(LoginEvent.Register) }
+                        )
                     }
                 }
         }

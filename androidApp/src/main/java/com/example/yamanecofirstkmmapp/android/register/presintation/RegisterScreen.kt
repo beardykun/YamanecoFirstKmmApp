@@ -4,10 +4,8 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -16,8 +14,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.EditField
+import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterEvent
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterState
+import com.example.yamanecofirstkmmapp.shared.localization.L
+import com.example.yamanecofirstkmmapp.shared.localization.email
+import com.example.yamanecofirstkmmapp.shared.localization.name
+import com.example.yamanecofirstkmmapp.shared.localization.password
+import com.example.yamanecofirstkmmapp.shared.localization.register
 
 @Composable
 fun RegisterScreen(
@@ -46,7 +50,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.name,
-                            hint = "enter user name",
+                            hint = L.registration.editText.name(),
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditName(it))
                             }
@@ -55,7 +59,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.email,
-                            hint = "enter email",
+                            hint = L.registration.editText.email(),
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditEmail(it))
                             }
@@ -65,18 +69,17 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.password,
-                            hint = "enter password",
+                            hint = L.registration.editText.password(),
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditPassword(it))
                             }
                         )
                     }
                     item {
-                        Button(onClick = {
-                            onEvent(RegisterEvent.Register)
-                        }) {
-                            Text("Register")
-                        }
+                        RoundedButton(
+                            label = L.registration.button.register(),
+                            onClick = { onEvent(RegisterEvent.Register) }
+                        )
                     }
                 }
         }

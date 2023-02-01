@@ -74,12 +74,12 @@ struct LoginScreen: View {
                                 })
             )
             CustomButton(
-                lable: "Login",
+                label: "Login",
                 action: {
                     viewModel.onEvent(event: LoginEvent.Login())
                 })
             CustomButton(
-                lable: "Register",
+                label: "Register",
                 action: {
                     viewModel.onEvent(event: LoginEvent.Register())
                 })

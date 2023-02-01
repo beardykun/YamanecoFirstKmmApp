@@ -20,8 +20,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
+import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.home.presentation.HomeEvent
 import com.example.yamanecofirstkmmapp.home.presentation.HomeState
+import com.example.yamanecofirstkmmapp.shared.localization.L
+import com.example.yamanecofirstkmmapp.shared.localization.logout
 
 @Composable
 fun HomeScreen(
@@ -42,15 +45,10 @@ fun HomeScreen(
         ) {
             Text(text = state.user.id)
             Text(text = state.user.name)
-            Button(
-                onClick = {
-                    onEvent(HomeEvent.LogOut)
-                },
-                shape = RoundedCornerShape(50),
-                modifier = Modifier.padding(10.dp)
-            ) {
-                Text(text = "LogOut")
-            }
+            RoundedButton(
+                label = L.home.button.logout(),
+                onClick = { onEvent(HomeEvent.LogOut) }
+            )
         }
     }
 }

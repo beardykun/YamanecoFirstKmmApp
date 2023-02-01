@@ -59,7 +59,7 @@ struct RegisterScreen: View {
                                 })
             )
             CustomButton(
-                lable: "Register",
+                label: "Register",
                 action: {
                 viewModel.onEvent(event: RegisterEvent.Register())
             })
