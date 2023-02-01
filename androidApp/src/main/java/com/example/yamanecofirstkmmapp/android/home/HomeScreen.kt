@@ -46,7 +46,7 @@ fun HomeScreen(
             Text(text = state.user.id)
             Text(text = state.user.name)
             RoundedButton(
-                label = L.home.button.logout(),
+                label = "Logout",
                 onClick = { onEvent(HomeEvent.LogOut) }
             )
         }

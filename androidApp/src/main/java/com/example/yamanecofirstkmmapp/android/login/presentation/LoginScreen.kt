@@ -60,7 +60,7 @@ fun LoginScreen(
                     item {
                         EditField(
                             text = state.email,
-                            hint = L.login.editText.email(),
+                            hint = "Enter email",
                             onTextChanged = { newValue ->
                                 onEvent(LoginEvent.EditEmail(newValue))
                             }
@@ -70,7 +70,7 @@ fun LoginScreen(
                     item {
                         EditField(
                             text = state.password,
-                            hint = L.login.editText.password(),
+                            hint = "Enter password",
                             onTextChanged = { newValue ->
                                 onEvent(LoginEvent.EditPassword(newValue))
                             }
@@ -78,13 +78,13 @@ fun LoginScreen(
                     }
                     item {
                         RoundedButton(
-                            label = L.login.button.login(),
+                            label = "Login",
                             onClick = { onEvent(LoginEvent.Login) }
                         )
                     }
                     item {
                         RoundedButton(
-                            label = L.login.button.register(),
+                            label = "Register",
                             onClick = { onEvent(LoginEvent.Register) }
                         )
                     }

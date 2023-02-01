@@ -50,7 +50,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.name,
-                            hint = L.registration.editText.name(),
+                            hint = "Enter name",
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditName(it))
                             }
@@ -59,7 +59,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.email,
-                            hint = L.registration.editText.email(),
+                            hint = "Enter email",
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditEmail(it))
                             }
@@ -69,7 +69,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.password,
-                            hint = L.registration.editText.password(),
+                            hint = "Enter password",
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditPassword(it))
                             }
@@ -77,7 +77,7 @@ fun RegisterScreen(
                     }
                     item {
                         RoundedButton(
-                            label = L.registration.button.register(),
+                            label = "Register",
                             onClick = { onEvent(RegisterEvent.Register) }
                         )
                     }
