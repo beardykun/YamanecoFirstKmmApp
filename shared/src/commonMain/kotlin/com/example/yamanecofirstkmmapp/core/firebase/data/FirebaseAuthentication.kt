@@ -57,4 +57,8 @@ class FirebaseAuthentication : IFirebaseAuthentication {
     override suspend fun logOut() {
         getInstance().signOut()
     }
+
+    override suspend fun resetPassword(email: String) {
+        getInstance().sendPasswordResetEmail(email)
+    }
 }

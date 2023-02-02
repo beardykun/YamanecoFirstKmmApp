@@ -1,12 +1,15 @@
 package com.example.yamanecofirstkmmapp.android.login.presentation
 
+import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -37,6 +40,11 @@ fun LoginScreen(
             if (state.userId != null) {
                 LaunchedEffect(Unit) {
                     navController.navigate(Routes.HOME)
+                }
+            }
+            if (state.navigateToResetPassword) {
+                LaunchedEffect(Unit) {
+                    navController.navigate(Routes.RESET_PASSWORD)
                 }
             }
             if (state.newRegistration) {
@@ -71,6 +79,14 @@ fun LoginScreen(
                                 onEvent(LoginEvent.EditPassword(newValue))
                             }
                         )
+                    }
+                    item {
+                        Text(
+                            "reset password",
+                            modifier = Modifier.clickable {
+                                navController.navigate(Routes.LOGIN)
+                                onEvent(LoginEvent.ForgotPassword)
+                            })
                     }
                     item {
                         RoundedButton(

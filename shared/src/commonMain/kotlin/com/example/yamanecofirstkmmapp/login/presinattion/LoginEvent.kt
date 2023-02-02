@@ -6,4 +6,5 @@ sealed class LoginEvent {
     data class EditEmail(val newEmail: String) : LoginEvent()
     data class EditPassword(val newPassword: String) : LoginEvent()
     object OnErrorSeen : LoginEvent()
+    object ForgotPassword : LoginEvent()
 }

@@ -17,7 +17,8 @@ struct CustomButton: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
-        .background(Color.lightBlue)
+        .background(Color.blue)
+        .foregroundColor(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }

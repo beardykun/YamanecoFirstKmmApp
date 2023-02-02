@@ -59,6 +59,13 @@ class LoginViewModel(
                     )
                 }
             }
+            is LoginEvent.ForgotPassword -> {
+                _state.update {
+                    it.copy(
+                        navigateToResetPassword = true
+                    )
+                }
+            }
         }
     }
 

@@ -19,6 +19,8 @@ import com.example.yamanecofirstkmmapp.android.login.presentation.AndroidLoginVi
 import com.example.yamanecofirstkmmapp.android.login.presentation.LoginScreen
 import com.example.yamanecofirstkmmapp.android.register.presintation.AndroidRegisterViewModel
 import com.example.yamanecofirstkmmapp.android.register.presintation.RegisterScreen
+import com.example.yamanecofirstkmmapp.android.resetPassword.ResetPasswordScreen
+import com.example.yamanecofirstkmmapp.android.resetPassword.presentation.AndroidResetPasswordViewModel
 import com.example.yamanecofirstkmmapp.android.start.presentation.StartScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -63,6 +65,17 @@ fun RegisterRoot() {
             val viewModel = hiltViewModel<AndroidLoginViewModel>()
             val state by viewModel.state.collectAsState()
             LoginScreen(
+                navController = navController,
+                state = state,
+                onEvent = viewModel::onEvent
+            )
+        }
+        composable(
+            route = Routes.RESET_PASSWORD,
+        ) {
+            val viewModel = hiltViewModel<AndroidResetPasswordViewModel>()
+            val state by viewModel.state.collectAsState()
+            ResetPasswordScreen(
                 navController = navController,
                 state = state,
                 onEvent = viewModel::onEvent
