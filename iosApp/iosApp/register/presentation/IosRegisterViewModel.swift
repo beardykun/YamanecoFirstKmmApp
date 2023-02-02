@@ -32,7 +32,6 @@ extension RegisterScreen {
             handle = viewModel.state.subscribe(onCollect: { state in
                 if let state = state {
                     self.state = state
-                    print("register new state " + state.name)
                 }
             })
         }

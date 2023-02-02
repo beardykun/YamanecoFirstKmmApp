@@ -21,17 +21,9 @@ fun MyApplicationTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        darkColors(
-            primary = Color(0xFFBB86FC),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
+        com.example.yamanecofirstkmmapp.android.core.theme.darkColors
     } else {
-        lightColors(
-            primary = Color(0xFF6200EE),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
+        com.example.yamanecofirstkmmapp.android.core.theme.lightColors
     }
     val typography = Typography(
         body1 = TextStyle(
