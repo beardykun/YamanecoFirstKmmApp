@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
+import com.example.yamanecofirstkmmapp.core.StringRes
 import com.example.yamanecofirstkmmapp.home.presentation.HomeEvent
 import com.example.yamanecofirstkmmapp.home.presentation.HomeState
 
@@ -37,7 +38,7 @@ fun HomeScreen(
             Text(text = state.user.id)
             Text(text = state.user.name)
             RoundedButton(
-                label = "Logout",
+                label = StringRes.logout,
                 onClick = { onEvent(HomeEvent.LogOut) }
             )
         }

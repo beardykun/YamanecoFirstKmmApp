@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.EditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
+import com.example.yamanecofirstkmmapp.core.StringRes
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterEvent
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterState
 
@@ -45,7 +46,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.name,
-                            hint = "Enter name",
+                            hint = StringRes.editName,
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditName(it))
                             }
@@ -54,7 +55,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.email,
-                            hint = "Enter email",
+                            hint = StringRes.editEmail,
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditEmail(it))
                             }
@@ -64,7 +65,7 @@ fun RegisterScreen(
                     item {
                         EditField(
                             text = state.password,
-                            hint = "Enter password",
+                            hint = StringRes.editPassword,
                             onTextChanged = {
                                 onEvent(RegisterEvent.EditPassword(it))
                             }
@@ -72,7 +73,7 @@ fun RegisterScreen(
                     }
                     item {
                         RoundedButton(
-                            label = "Register",
+                            label = StringRes.register,
                             onClick = { onEvent(RegisterEvent.Register) }
                         )
                     }

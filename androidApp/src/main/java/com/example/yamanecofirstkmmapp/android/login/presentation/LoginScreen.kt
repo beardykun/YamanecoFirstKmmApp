@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.EditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
+import com.example.yamanecofirstkmmapp.core.StringRes
 import com.example.yamanecofirstkmmapp.login.presinattion.LoginEvent
 import com.example.yamanecofirstkmmapp.login.presinattion.LoginState
 
@@ -55,7 +56,7 @@ fun LoginScreen(
                     item {
                         EditField(
                             text = state.email,
-                            hint = "Enter email",
+                            hint = StringRes.editEmail,
                             onTextChanged = { newValue ->
                                 onEvent(LoginEvent.EditEmail(newValue))
                             }
@@ -65,7 +66,7 @@ fun LoginScreen(
                     item {
                         EditField(
                             text = state.password,
-                            hint = "Enter password",
+                            hint = StringRes.editPassword,
                             onTextChanged = { newValue ->
                                 onEvent(LoginEvent.EditPassword(newValue))
                             }
@@ -73,13 +74,13 @@ fun LoginScreen(
                     }
                     item {
                         RoundedButton(
-                            label = "Login",
+                            label = StringRes.login,
                             onClick = { onEvent(LoginEvent.Login) }
                         )
                     }
                     item {
                         RoundedButton(
-                            label = "Register",
+                            label = StringRes.register,
                             onClick = { onEvent(LoginEvent.Register) }
                         )
                     }

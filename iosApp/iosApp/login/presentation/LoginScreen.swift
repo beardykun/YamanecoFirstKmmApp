@@ -60,26 +60,26 @@ struct LoginScreen: View {
             }.hidden()
             
             CustomTextField(
-                titleKey: "Email",
+                titleKey: StringRes.Companion().editEmail,
                 secured: false,
                 text: Binding(get: {viewModel.state.email}, set: { value in
                     viewModel.onEvent(event: LoginEvent.EditEmail(newEmail: value))
                 })
             )
             CustomTextField(
-                titleKey: "Password",
+                titleKey: StringRes.Companion().editPassword,
                 secured: true,
                 text: Binding(get: {viewModel.state.password}, set:{ value in
                     viewModel.onEvent(event: LoginEvent.EditPassword(newPassword: value))
                                 })
             )
             CustomButton(
-                label: "Login",
+                label: StringRes.Companion().login,
                 action: {
                     viewModel.onEvent(event: LoginEvent.Login())
                 })
             CustomButton(
-                label: "Register",
+                label: StringRes.Companion().register_,
                 action: {
                     viewModel.onEvent(event: LoginEvent.Register())
                 })

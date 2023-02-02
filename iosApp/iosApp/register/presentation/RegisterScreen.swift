@@ -29,7 +29,7 @@ struct RegisterScreen: View {
                     fireStore: fireStore
                 ),
                 isActive:
-                    Binding(get: {viewModel.state.isRegistered}, set: {value in
+                    Binding(get: {viewModel.state.isRegistered}, set: { value in
                         
                     })
             ) {
@@ -37,7 +37,7 @@ struct RegisterScreen: View {
             }.hidden()
             
             CustomTextField(
-                titleKey: "Name",
+                titleKey: StringRes.Companion().editName,
                 secured: false,
                 text: Binding(get: {viewModel.state.name}, set: { value in
                     print(value)
@@ -45,21 +45,21 @@ struct RegisterScreen: View {
                 })
             )
             CustomTextField(
-                titleKey: "Email",
+                titleKey: StringRes.Companion().editEmail,
                 secured: false,
                 text: Binding(get: {viewModel.state.email}, set: { value in
                     viewModel.onEvent(event: RegisterEvent.EditEmail(newEmail: value))
                 })
             )
             CustomTextField(
-                titleKey: "Password",
+                titleKey: StringRes.Companion().editPassword,
                 secured: true,
                 text: Binding(get: {viewModel.state.password}, set:{ value in
                     viewModel.onEvent(event: RegisterEvent.EditPassword(newPassword: value))
                                 })
             )
             CustomButton(
-                label: "Register",
+                label: StringRes.Companion().register_,
                 action: {
                 viewModel.onEvent(event: RegisterEvent.Register())
             })
