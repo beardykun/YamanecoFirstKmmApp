@@ -101,6 +101,7 @@ val packForXcode by tasks.creating(Sync::class) {
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")//findProperty("configuration.build.dir")
     println("TAGGER targetDir = $targetDir")
+    println("TAGGER framework = $framework")
     println("TAGGER ${project.rootDir}/shared/src/commonMain/resources/ios")
     if (targetDir == null) {
         System.err.println("configuration.build.dir is not defined. Please pass this property from the XCode build.")
@@ -109,12 +110,15 @@ val packForXcode by tasks.creating(Sync::class) {
     into(targetDir)
 
 //    This is added to the packForXCode task. commonMain/resources/ios is the location of the generated Localizable.strings files.
-    doLast {
+    //doLast {
         copy {
-            from("${project.rootDir}/src/commonMain/resources/ios")
+            from("${project.rootDir}/shared/src/commonMain/resources/ios/")
             into("${targetDir}/shared.framework")
+
+            //into("${project.rootDir}")
+
         }
-    }
+    //}
 }
 
 tasks {
