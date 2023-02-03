@@ -30,7 +30,7 @@ struct StartScreen: View {
                     EmptyView()
                 }.hidden()
         }.onAppear(perform: {
-            print("called")
+            viewModel.observeState()
             viewModel.redirectToNextScreen()
         })
         .onDisappear {

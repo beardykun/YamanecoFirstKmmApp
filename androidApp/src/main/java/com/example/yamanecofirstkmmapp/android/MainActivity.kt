@@ -19,7 +19,7 @@ import com.example.yamanecofirstkmmapp.android.login.presentation.AndroidLoginVi
 import com.example.yamanecofirstkmmapp.android.login.presentation.LoginScreen
 import com.example.yamanecofirstkmmapp.android.register.presintation.AndroidRegisterViewModel
 import com.example.yamanecofirstkmmapp.android.register.presintation.RegisterScreen
-import com.example.yamanecofirstkmmapp.android.resetPassword.ResetPasswordScreen
+import com.example.yamanecofirstkmmapp.android.resetPassword.presentation.ResetPasswordScreen
 import com.example.yamanecofirstkmmapp.android.resetPassword.presentation.AndroidResetPasswordViewModel
 import com.example.yamanecofirstkmmapp.android.start.presentation.StartScreen
 import dagger.hilt.android.AndroidEntryPoint

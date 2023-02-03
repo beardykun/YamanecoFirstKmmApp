@@ -14,5 +14,5 @@ interface IFirebaseAuthentication {
 
     suspend fun logOut()
 
-    suspend fun resetPassword(email: String)
+    suspend fun resetPassword(email: String): Resource<Boolean>
 }

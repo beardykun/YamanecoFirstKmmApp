@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
+import com.example.yamanecofirstkmmapp.android.core.extensions.navigateWithDestroy
 import com.example.yamanecofirstkmmapp.core.StringRes
 import com.example.yamanecofirstkmmapp.home.presentation.HomeEvent
 import com.example.yamanecofirstkmmapp.home.presentation.HomeState
@@ -26,11 +27,6 @@ fun HomeScreen(
     state: HomeState
 ) {
     Scaffold {
-        if (state.isLogOut) {
-            LaunchedEffect(Unit) {
-                navController.navigate(Routes.LOGIN)
-            }
-        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly,
@@ -41,7 +37,10 @@ fun HomeScreen(
             RoundedButton(
                 label = StringRes.logout,
                 color = Color.Black,
-                onClick = { onEvent(HomeEvent.LogOut) }
+                onClick = {
+                    onEvent(HomeEvent.LogOut)
+                    navController.navigateWithDestroy(Routes.LOGIN)
+                }
             )
         }
     }

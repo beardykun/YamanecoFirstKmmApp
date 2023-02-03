@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.EditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
+import com.example.yamanecofirstkmmapp.android.core.extensions.navigateWithDestroy
 import com.example.yamanecofirstkmmapp.core.StringRes
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterEvent
 import com.example.yamanecofirstkmmapp.register.presentation.RegisterState
@@ -32,52 +33,53 @@ fun RegisterScreen(
         Box(contentAlignment = Alignment.Center) {
             if (state.isRegistered) {
                 LaunchedEffect(Unit) {
-                    navController.navigate(Routes.HOME)
+                    navController.navigateWithDestroy(Routes.HOME)
                 }
             }
             if (state.error != null) {
                 Toast.makeText(context, state.error?.message, Toast.LENGTH_SHORT).show()
                 onEvent(RegisterEvent.OnErrorSeen)
-            } else
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    item {
-                        EditField(
-                            text = state.name,
-                            hint = StringRes.editName,
-                            onTextChanged = {
-                                onEvent(RegisterEvent.EditName(it))
-                            }
-                        )
-                    }
-                    item {
-                        EditField(
-                            text = state.email,
-                            hint = StringRes.editEmail,
-                            onTextChanged = {
-                                onEvent(RegisterEvent.EditEmail(it))
-                            }
-                        )
-                    }
+            }
 
-                    item {
-                        EditField(
-                            text = state.password,
-                            hint = StringRes.editPassword,
-                            onTextChanged = {
-                                onEvent(RegisterEvent.EditPassword(it))
-                            }
-                        )
-                    }
-                    item {
-                        RoundedButton(
-                            label = StringRes.register,
-                            onClick = { onEvent(RegisterEvent.Register) }
-                        )
-                    }
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                item {
+                    EditField(
+                        text = state.name,
+                        hint = StringRes.editName,
+                        onTextChanged = {
+                            onEvent(RegisterEvent.EditName(it))
+                        }
+                    )
                 }
+                item {
+                    EditField(
+                        text = state.email,
+                        hint = StringRes.editEmail,
+                        onTextChanged = {
+                            onEvent(RegisterEvent.EditEmail(it))
+                        }
+                    )
+                }
+
+                item {
+                    EditField(
+                        text = state.password,
+                        hint = StringRes.editPassword,
+                        onTextChanged = {
+                            onEvent(RegisterEvent.EditPassword(it))
+                        }
+                    )
+                }
+                item {
+                    RoundedButton(
+                        label = StringRes.register,
+                        onClick = { onEvent(RegisterEvent.Register) }
+                    )
+                }
+            }
         }
     }
 }

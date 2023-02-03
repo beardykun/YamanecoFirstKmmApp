@@ -8,12 +8,19 @@
 
 import SwiftUI
 import shared
+import SimpleToast
 
 struct RegisterScreen: View {
     
     @ObservedObject var viewModel: IosRegisterViewModel
     private let firebaseAuth: FirebaseAuthentication
     private let fireStore: FirebaseFireStore
+    private let toastOptions = SimpleToastOptions(
+        alignment: .bottom,
+        hideAfter: 3,
+        animation: .default,
+        modifierType: .slide
+    )
     
     init(firebaseAuth: FirebaseAuthentication, fireStore: FirebaseFireStore) {
         self.viewModel = IosRegisterViewModel(firebaseAuthentication: firebaseAuth, fireStore: fireStore)
@@ -29,40 +36,53 @@ struct RegisterScreen: View {
                     fireStore: fireStore
                 ),
                 isActive:
-                    Binding(get: {viewModel.state.isRegistered}, set: { value in
+                    Binding(get: { viewModel.state.isRegistered }, set: { value in
                         
                     })
             ) {
                 EmptyView()
             }.hidden()
             
-            CustomTextField(
+            EditText(
                 titleKey: StringRes.Companion().editName,
                 secured: false,
-                text: Binding(get: {viewModel.state.name}, set: { value in
-                    print(value)
+                text: Binding(get: { viewModel.state.name }, set: { value in
                     viewModel.onEvent(event: RegisterEvent.EditName(newName: value))
                 })
             )
-            CustomTextField(
+            EditText(
                 titleKey: StringRes.Companion().editEmail,
                 secured: false,
-                text: Binding(get: {viewModel.state.email}, set: { value in
+                text: Binding(get: { viewModel.state.email }, set: { value in
                     viewModel.onEvent(event: RegisterEvent.EditEmail(newEmail: value))
                 })
             )
-            CustomTextField(
+            EditText(
                 titleKey: StringRes.Companion().editPassword,
                 secured: true,
-                text: Binding(get: {viewModel.state.password}, set:{ value in
+                text: Binding(get: { viewModel.state.password }, set:{ value in
                     viewModel.onEvent(event: RegisterEvent.EditPassword(newPassword: value))
-                                })
+                })
             )
-            CustomButton(
+            RoundedButton(
                 label: StringRes.Companion().register_,
                 action: {
                 viewModel.onEvent(event: RegisterEvent.Register())
             })
+        }
+        .simpleToast(isPresented: Binding(get: { viewModel.state.error != nil }, set: {_,_ in
+            viewModel.onEvent(event: RegisterEvent.OnErrorSeen())
+        }),options: toastOptions, content: {
+            HStack {
+                Text(viewModel.state.error?.message ?? "unknown error")
+            }
+            .padding(20)
+            .background(Color.green)
+            .foregroundColor(Color.white)
+            .cornerRadius(16)
+        })
+        .onAppear {
+            viewModel.observeState()
         }
         .padding(.all, 16)
         .onDisappear {

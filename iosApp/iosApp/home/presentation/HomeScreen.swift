@@ -36,13 +36,16 @@ struct HomeScreen: View {
             Text(viewModel.state.user.name)
             Spacer(minLength: 16)
 
-            CustomButton(
+            RoundedButton(
                 label: StringRes.Companion().logout,
                 action: {
                 viewModel.onEvent(event: HomeEvent.LogOut())
             })
             
             Spacer()
+        }
+        .onAppear {
+            viewModel.observeState()
         }
         .navigationBarBackButtonHidden(true)
         .onDisappear {

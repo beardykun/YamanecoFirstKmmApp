@@ -1,7 +1,9 @@
 package com.example.yamanecofirstkmmapp.resetPassword.presentation
 
+import com.example.yamanecofirstkmmapp.core.presentation.FirebaseException
+
 data class ResetPasswordState(
     val email: String = "",
-    val onResetClicked: Boolean = false,
-    val navigateToHome: Boolean = false
+    val navigateToHome: Boolean = false,
+    val error: FirebaseException? = null,
 )

@@ -57,8 +57,9 @@ object Deps {
     const val sqlDelightCoroutinesExtensions = "com.squareup.sqldelight:coroutines-extensions:$sqlDelightVersion"
 
     // FIREBASE
-    private const val firebaseVersion = "7.2.0"
-    const val firebaseUiAuth = "com.firebaseui:firebase-ui-auth:$firebaseVersion"
+    private const val firebaseVersion = "1.6.2"
+    const val firebaseAuth = "dev.gitlive:firebase-auth:$firebaseVersion"
+    const val firebaseFirestore = "dev.gitlive:firebase-firestore:$firebaseVersion"
 
     //GOOGLE-SERVICES
     private const val servicesVersion = "4.3.15"

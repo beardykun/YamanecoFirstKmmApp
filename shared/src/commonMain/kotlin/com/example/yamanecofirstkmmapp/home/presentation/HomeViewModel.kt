@@ -37,12 +37,13 @@ class HomeViewModel(
     fun onEvent(event: HomeEvent) {
         when (event) {
             is HomeEvent.LogOut -> {
+                logOut()
+                //FIXME should be done only in case of success
                 _state.update {
                     it.copy(
                         isLogOut = true
                     )
                 }
-                logOut()
             }
         }
     }

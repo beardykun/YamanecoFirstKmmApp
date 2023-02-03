@@ -23,7 +23,9 @@ extension HomeScreen {
             self.getUserUseCase = GetUserUseCase(fireStore: fireStore, firebaseAuthentication: firebaseAuth)
             self.logoutUserUseCase = LogoutUserUseCase(firebaseAuthentication: firebaseAuth)
             self.viewModel = HomeViewModel(getUserUseCase: getUserUseCase, logoutUserUseCase: logoutUserUseCase, coroutineScope: nil)
-            
+        }
+        
+        func observeState() {
             handle = viewModel.state.subscribe(onCollect: { state in
                 if let state = state {
                     self.state = state

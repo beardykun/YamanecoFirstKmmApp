@@ -1,7 +1,7 @@
 package com.example.yamanecofirstkmmapp.login.presinattion
 
-import com.example.yamanecofirstkmmapp.login.domain.LoginUserUseCase
 import com.example.yamanecofirstkmmapp.core.presentation.FirebaseException
+import com.example.yamanecofirstkmmapp.login.domain.LoginUserUseCase
 import com.example.yamanecofirstkmmapp.util.Resource
 import com.example.yamanecofirstkmmapp.util.toCommonStateFlow
 import kotlinx.coroutines.CoroutineScope
@@ -52,26 +52,17 @@ class LoginViewModel(
             is LoginEvent.Login -> {
                 loginUser(state.value)
             }
-            LoginEvent.Register -> {
-                _state.update {
-                    it.copy(
-                        newRegistration = true
-                    )
-                }
-            }
-            is LoginEvent.ForgotPassword -> {
-                _state.update {
-                    it.copy(
-                        navigateToResetPassword = true
-                    )
-                }
-            }
         }
     }
 
 
     private fun loginUser(state: LoginState) {
         if (state.isLoading || state.email.isBlank() || state.password.isBlank()) {
+            _state.update {
+                it.copy(
+                    error = FirebaseException(Exception("email or password is empty"))
+                )
+            }
             return
         }
         viewModelScope.launch {
