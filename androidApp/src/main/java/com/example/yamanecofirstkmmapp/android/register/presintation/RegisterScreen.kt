@@ -1,6 +1,7 @@
 package com.example.yamanecofirstkmmapp.android.register.presintation
 
 import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.EditField
+import com.example.yamanecofirstkmmapp.android.core.composables.PasswordEditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.android.core.extensions.navigateWithDestroy
 import com.example.yamanecofirstkmmapp.core.StringRes
@@ -43,7 +45,8 @@ fun RegisterScreen(
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
                 item {
                     EditField(
@@ -65,10 +68,10 @@ fun RegisterScreen(
                 }
 
                 item {
-                    EditField(
-                        text = state.password,
+                    PasswordEditField(
+                        password = state.password,
                         hint = StringRes.editPassword,
-                        onTextChanged = {
+                        onPasswordChange = {
                             onEvent(RegisterEvent.EditPassword(it))
                         }
                     )

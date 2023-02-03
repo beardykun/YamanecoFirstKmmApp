@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.EditField
+import com.example.yamanecofirstkmmapp.android.core.composables.PasswordEditField
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
 import com.example.yamanecofirstkmmapp.android.core.extensions.navigateWithDestroy
 import com.example.yamanecofirstkmmapp.core.StringRes
@@ -63,10 +64,10 @@ fun LoginScreen(
                 }
 
                 item {
-                    EditField(
-                        text = state.password,
+                    PasswordEditField(
+                        password = state.password,
                         hint = StringRes.editPassword,
-                        onTextChanged = { newValue ->
+                        onPasswordChange = { newValue ->
                             onEvent(LoginEvent.EditPassword(newValue))
                         }
                     )
