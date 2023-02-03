@@ -66,6 +66,11 @@ class RegisterViewModel(
 
     private fun registerUser(state: RegisterState) {
         if (state.isLoading || state.email.isBlank() || state.password.isBlank()) {
+            _state.update {
+                it.copy(
+                    error = FirebaseException(Exception("email or password is empty"))
+                )
+            }
             return
         }
         viewModelScope.launch {
