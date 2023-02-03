@@ -1,7 +1,7 @@
 package com.example.yamanecofirstkmmapp.core.firebase.data
 
 import com.example.yamanecofirstkmmapp.core.firebase.domain.IFirebaseFireStore
-import com.example.yamanecofirstkmmapp.core.presentation.User
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.User
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.firestore.FirebaseFirestore
 import dev.gitlive.firebase.firestore.firestore

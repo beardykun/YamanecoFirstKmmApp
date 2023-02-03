@@ -1,6 +1,6 @@
 package com.example.yamanecofirstkmmapp.login.presinattion
 
-import com.example.yamanecofirstkmmapp.core.presentation.FirebaseException
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.FirebaseException
 
 data class LoginState(
     val email: String = "",

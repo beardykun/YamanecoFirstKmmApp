@@ -1,4 +1,4 @@
-package com.example.yamanecofirstkmmapp.core.presentation
+package com.example.yamanecofirstkmmapp.core.firebase.presentation
 
 import dev.gitlive.firebase.firestore.FieldValue
 

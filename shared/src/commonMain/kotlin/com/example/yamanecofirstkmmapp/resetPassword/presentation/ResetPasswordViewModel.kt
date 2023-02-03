@@ -1,6 +1,6 @@
 package com.example.yamanecofirstkmmapp.resetPassword.presentation
 
-import com.example.yamanecofirstkmmapp.core.presentation.FirebaseException
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.FirebaseException
 import com.example.yamanecofirstkmmapp.resetPassword.domain.ResetPasswordUseCase
 import com.example.yamanecofirstkmmapp.util.Resource
 import com.example.yamanecofirstkmmapp.util.toCommonStateFlow

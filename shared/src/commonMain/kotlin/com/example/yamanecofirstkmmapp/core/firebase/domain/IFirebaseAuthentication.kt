@@ -12,7 +12,7 @@ interface IFirebaseAuthentication {
 
     suspend fun checkCurrentUser(): FirebaseUser?
 
-    suspend fun logOut()
+    suspend fun logOut(): Resource<Boolean>
 
     suspend fun resetPassword(email: String): Resource<Boolean>
 }

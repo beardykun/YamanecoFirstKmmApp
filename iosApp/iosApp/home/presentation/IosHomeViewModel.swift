@@ -15,7 +15,7 @@ extension HomeScreen {
         private let getUserUseCase: GetUserUseCase
         private let logoutUserUseCase: LogoutUserUseCase
         private let viewModel: HomeViewModel
-        @Published var state = HomeState(user: User(id: "", name: "", createdAt: 0), isLogOut: false)
+        @Published var state = HomeState(user: User(id: "", name: "", createdAt: 0), isLogOut: false, error: nil)
         private var handle: DisposableHandle?
         @Published var isLogout = false
         

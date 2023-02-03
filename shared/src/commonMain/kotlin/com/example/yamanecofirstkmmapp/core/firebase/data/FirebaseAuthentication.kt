@@ -54,8 +54,13 @@ class FirebaseAuthentication : IFirebaseAuthentication {
         } else user
     }
 
-    override suspend fun logOut() {
-        getInstance().signOut()
+    override suspend fun logOut(): Resource<Boolean> {
+        return try {
+            getInstance().signOut()
+            Resource.Success(data = true)
+        } catch (e: Exception) {
+            Resource.Error(e)
+        }
     }
 
     override suspend fun resetPassword(email: String): Resource<Boolean> {

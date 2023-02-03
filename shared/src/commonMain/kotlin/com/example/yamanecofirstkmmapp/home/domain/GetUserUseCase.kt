@@ -2,7 +2,7 @@ package com.example.yamanecofirstkmmapp.home.domain
 
 import com.example.yamanecofirstkmmapp.core.firebase.data.FirebaseAuthentication
 import com.example.yamanecofirstkmmapp.core.firebase.data.FirebaseFireStore
-import com.example.yamanecofirstkmmapp.core.presentation.User
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

@@ -1,6 +1,6 @@
 package com.example.yamanecofirstkmmapp.core.firebase.domain
 
-import com.example.yamanecofirstkmmapp.core.presentation.User
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.User
 
 interface IFirebaseFireStore {
 

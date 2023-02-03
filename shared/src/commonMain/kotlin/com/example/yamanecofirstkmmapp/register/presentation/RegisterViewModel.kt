@@ -1,7 +1,7 @@
 package com.example.yamanecofirstkmmapp.register.presentation
 
-import com.example.yamanecofirstkmmapp.core.presentation.FirebaseException
-import com.example.yamanecofirstkmmapp.core.presentation.User
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.FirebaseException
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.User
 import com.example.yamanecofirstkmmapp.register.domain.RegisterUserUseCase
 import com.example.yamanecofirstkmmapp.util.Resource
 import com.example.yamanecofirstkmmapp.util.toCommonStateFlow

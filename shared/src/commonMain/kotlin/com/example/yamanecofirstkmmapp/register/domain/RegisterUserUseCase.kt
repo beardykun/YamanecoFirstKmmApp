@@ -2,7 +2,7 @@ package com.example.yamanecofirstkmmapp.register.domain
 
 import com.example.yamanecofirstkmmapp.core.firebase.data.FirebaseAuthentication
 import com.example.yamanecofirstkmmapp.core.firebase.data.FirebaseFireStore
-import com.example.yamanecofirstkmmapp.core.presentation.User
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.User
 import com.example.yamanecofirstkmmapp.util.Resource
 
 class RegisterUserUseCase(

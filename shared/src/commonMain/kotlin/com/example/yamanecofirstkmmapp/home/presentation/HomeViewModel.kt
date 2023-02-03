@@ -1,7 +1,9 @@
 package com.example.yamanecofirstkmmapp.home.presentation
 
+import com.example.yamanecofirstkmmapp.core.firebase.presentation.FirebaseException
 import com.example.yamanecofirstkmmapp.home.domain.GetUserUseCase
 import com.example.yamanecofirstkmmapp.home.domain.LogoutUserUseCase
+import com.example.yamanecofirstkmmapp.util.Resource
 import com.example.yamanecofirstkmmapp.util.toCommonStateFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,10 +40,11 @@ class HomeViewModel(
         when (event) {
             is HomeEvent.LogOut -> {
                 logOut()
-                //FIXME should be done only in case of success
+            }
+            HomeEvent.OnErrorSeen -> {
                 _state.update {
                     it.copy(
-                        isLogOut = true
+                        error = null
                     )
                 }
             }
@@ -49,6 +52,21 @@ class HomeViewModel(
     }
 
     private fun logOut() = viewModelScope.launch {
-        logoutUserUseCase.execute()
+        when (val result = logoutUserUseCase.execute()) {
+            is Resource.Success -> {
+                _state.update {
+                    it.copy(
+                        isLogOut = true
+                    )
+                }
+            }
+            is Resource.Error -> {
+                _state.update {
+                    it.copy(
+                        error = FirebaseException(result.throwable!!)
+                    )
+                }
+            }
+        }
     }
 }
