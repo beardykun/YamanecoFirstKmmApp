@@ -16,6 +16,7 @@ import com.example.yamanecofirstkmmapp.core.Colors
 fun RoundedButton(
     label: String,
     onClick: () -> Unit,
+    color: Color = Color.White,
     modifier: Modifier = Modifier
 ) {
     Button(
@@ -28,6 +29,9 @@ fun RoundedButton(
         shape = RoundedCornerShape(50),
         modifier = modifier.padding(10.dp)
     ) {
-        Text(text = label)
+        Text(
+            text = label,
+            color = color
+        )
     }
 }

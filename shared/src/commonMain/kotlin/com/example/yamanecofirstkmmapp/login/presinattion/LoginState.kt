@@ -8,5 +8,4 @@ data class LoginState(
     val isLoading: Boolean = false,
     val userId: String? = null,
     val error: FirebaseException? = null,
-    val newRegistration: Boolean = false
 )

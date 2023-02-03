@@ -15,7 +15,8 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
-            isStatic = true // TODO setting this true solves this err --> ld: framework not found FirebaseAuth
+            isStatic =
+                true // TODO setting this true solves this err --> ld: framework not found FirebaseAuth
         }
     }
 
@@ -29,7 +30,7 @@ kotlin {
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -39,8 +40,8 @@ kotlin {
                 implementation(Deps.sqlDelightRuntime)
                 implementation(Deps.sqlDelightCoroutinesExtensions)
                 implementation(Deps.kotlinDateTime)
-                implementation("dev.gitlive:firebase-auth:1.6.2")
-                implementation("dev.gitlive:firebase-firestore:1.6.2")
+                implementation(Deps.firebaseAuth)
+                implementation(Deps.firebaseFirestore)
             }
         }
         val commonTest by getting {

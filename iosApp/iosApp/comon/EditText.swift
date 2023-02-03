@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct CustomTextField: View {
+struct EditText: View {
     let titleKey: String
     let secured: Bool
     @Binding var text: String

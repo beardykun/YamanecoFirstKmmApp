@@ -21,8 +21,10 @@ extension StartScreen {
         init(firebaseAuth: FirebaseAuthentication) {
             self.startAppUseCase = StartAppUseCase(firebaseAuthentication: firebaseAuth)
             self.viewModel = StartViewModel(startAppUseCase: startAppUseCase, coroutineScope: nil)
-            
-            self.handle = viewModel.state.subscribe(onCollect: {state in
+        }
+        
+        func observeState() {
+            handle = viewModel.state.subscribe(onCollect: { state in
                 if let state = state {
                     self.state = state
                     self.navigate(state: state)

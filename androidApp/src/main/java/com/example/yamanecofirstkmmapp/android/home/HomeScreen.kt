@@ -10,10 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
 import com.example.yamanecofirstkmmapp.android.core.composables.RoundedButton
+import com.example.yamanecofirstkmmapp.android.core.extensions.navigateWithDestroy
 import com.example.yamanecofirstkmmapp.core.StringRes
 import com.example.yamanecofirstkmmapp.home.presentation.HomeEvent
 import com.example.yamanecofirstkmmapp.home.presentation.HomeState
@@ -25,11 +27,6 @@ fun HomeScreen(
     state: HomeState
 ) {
     Scaffold {
-        if (state.isLogOut) {
-            LaunchedEffect(Unit) {
-                navController.navigate(Routes.LOGIN)
-            }
-        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly,
@@ -39,7 +36,11 @@ fun HomeScreen(
             Text(text = state.user.name)
             RoundedButton(
                 label = StringRes.logout,
-                onClick = { onEvent(HomeEvent.LogOut) }
+                color = Color.Black,
+                onClick = {
+                    onEvent(HomeEvent.LogOut)
+                    navController.navigateWithDestroy(Routes.LOGIN)
+                }
             )
         }
     }

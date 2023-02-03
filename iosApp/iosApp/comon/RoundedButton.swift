@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CustomButton: View {
+struct RoundedButton: View {
     let label: String
     let action: () -> Void
     var body: some View {
@@ -17,13 +17,14 @@ struct CustomButton: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
-        .background(Color.lightBlue)
+        .background(Color.blue)
+        .foregroundColor(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 
 struct CustomButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton(label: "button lable", action: {})
+        RoundedButton(label: "button lable", action: {})
     }
 }

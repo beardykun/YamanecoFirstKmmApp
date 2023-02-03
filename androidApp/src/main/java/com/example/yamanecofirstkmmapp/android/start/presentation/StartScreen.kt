@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.yamanecofirstkmmapp.android.core.Routes
+import com.example.yamanecofirstkmmapp.android.core.extensions.navigateWithDestroy
 import com.example.yamanecofirstkmmapp.start.presentation.Status
 
 @Composable
@@ -28,14 +29,14 @@ fun StartScreen(
         when (state.status) {
             Status.NOT_LOGGED_IN -> {
                 LaunchedEffect(Unit) {
-                    navController.navigate(
+                    navController.navigateWithDestroy(
                         Routes.LOGIN
                     )
                 }
             }
             Status.LOGGED_IN -> {
                 LaunchedEffect(Unit) {
-                    navController.navigate(
+                    navController.navigateWithDestroy(
                         Routes.HOME
                     )
                 }

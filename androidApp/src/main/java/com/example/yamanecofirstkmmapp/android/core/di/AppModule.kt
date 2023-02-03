@@ -6,6 +6,7 @@ import com.example.yamanecofirstkmmapp.home.domain.GetUserUseCase
 import com.example.yamanecofirstkmmapp.home.domain.LogoutUserUseCase
 import com.example.yamanecofirstkmmapp.login.domain.LoginUserUseCase
 import com.example.yamanecofirstkmmapp.register.domain.RegisterUserUseCase
+import com.example.yamanecofirstkmmapp.resetPassword.domain.ResetPasswordUseCase
 import com.example.yamanecofirstkmmapp.start.domain.StartAppUseCase
 import dagger.Module
 import dagger.Provides
@@ -66,4 +67,11 @@ object AppModule {
         firebaseAuthentication: FirebaseAuthentication
     ): GetUserUseCase =
         GetUserUseCase(fireStore, firebaseAuthentication)
+
+    @Provides
+    @Singleton
+    fun provideResetPasswordUseCase(
+        firebaseAuthentication: FirebaseAuthentication
+    ): ResetPasswordUseCase =
+        ResetPasswordUseCase(firebaseAuthentication)
 }

@@ -26,5 +26,5 @@ val darkColors = darkColors(
     onPrimary = Color.White,
     onBackground = Color.White,
     surface = DarkGrey,
-    onSurface = TextBlack
+    onSurface = Color.White
 )

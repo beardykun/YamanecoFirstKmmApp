@@ -17,10 +17,12 @@ struct LoginScreen: View {
     private let fireStore: FirebaseFireStore
     
     @State private var isShowingToast = false
+    @State private var navigateToRegister = false
+    @State var navigateToResetPassword = false
+
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
         hideAfter: 3,
-        backdropColor: Color.black.opacity(0.2),
         animation: .default,
         modifierType: .slide
     )
@@ -51,38 +53,49 @@ struct LoginScreen: View {
                     firebaseAuth: firebaseAuth,
                     fireStore: fireStore
                 ),
-                isActive:
-                    Binding(get: { viewModel.state.newRegistration }, set: { value in
-                    
-                })
+                isActive: $navigateToRegister
             ) {
                 EmptyView()
             }.hidden()
             
-            CustomTextField(
+            NavigationLink(
+                destination: ResetPasswordScreen(
+                    firebaseAuth: firebaseAuth,
+                    fireStore: fireStore
+                ),
+                isActive: $navigateToResetPassword
+            ) {
+                EmptyView()
+            }.hidden()
+            
+            EditText(
                 titleKey: StringRes.Companion().editEmail,
                 secured: false,
                 text: Binding(get: {viewModel.state.email}, set: { value in
                     viewModel.onEvent(event: LoginEvent.EditEmail(newEmail: value))
                 })
             )
-            CustomTextField(
+            EditText(
                 titleKey: StringRes.Companion().editPassword,
                 secured: true,
                 text: Binding(get: {viewModel.state.password}, set:{ value in
                     viewModel.onEvent(event: LoginEvent.EditPassword(newPassword: value))
                                 })
             )
-            CustomButton(
+            Button(StringRes.Companion().forgotPassword){
+                    navigateToResetPassword = true
+            }
+    
+            RoundedButton(
                 label: StringRes.Companion().login,
                 action: {
                     viewModel.onEvent(event: LoginEvent.Login())
                 })
-            CustomButton(
-                label: StringRes.Companion().register_,
-                action: {
-                    viewModel.onEvent(event: LoginEvent.Register())
-                })
+            Button(
+                StringRes.Companion().register_
+                ){
+                    navigateToRegister = true
+                }
         }
         .padding(.all)
         .simpleToast(isPresented: Binding(get: { viewModel.state.error != nil }, set: {_,_ in
@@ -96,6 +109,9 @@ struct LoginScreen: View {
             .foregroundColor(Color.white)
             .cornerRadius(16)
         })
+        .onAppear {
+            viewModel.observeState()
+        }
         .navigationBarBackButtonHidden(true)
         .onDisappear{
             viewModel.dispose()

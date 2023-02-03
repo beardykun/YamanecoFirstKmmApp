@@ -28,7 +28,9 @@ extension RegisterScreen {
         init(firebaseAuthentication: FirebaseAuthentication, fireStore: FirebaseFireStore) {
             registerUserUseCase = RegisterUserUseCase(firebaseAuthentication: firebaseAuthentication, fireStore: fireStore)
             viewModel = RegisterViewModel(registerUserUseCase: registerUserUseCase, coroutineScope: nil)
-            
+        }
+        
+        func observeState() {
             handle = viewModel.state.subscribe(onCollect: { state in
                 if let state = state {
                     self.state = state
